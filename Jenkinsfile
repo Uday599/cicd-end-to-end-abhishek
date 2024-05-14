@@ -67,8 +67,10 @@ pipeline {
                         git config --global user.name "${GIT_USERNAME}"
                         git config --global user.password "${GIT_PASSWORD}"
                         git remote -v
-                        git push 'https://github.com/Uday599/cicd-end-to-end-manifest-files.git' HEAD:main
+                        git push --set-upstream origin qa
+                        
                         '''  
+                        // git push 'https://github.com/Uday599/cicd-end-to-end-manifest-files.git' HEAD:main
 
                         }
                     }
