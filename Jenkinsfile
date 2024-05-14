@@ -36,14 +36,15 @@ pipeline {
                 script{
                     docker.withRegistry( '', registryCredential ) {
                     dockerImage.push()
-                    
+
                     //sh '''
                     // echo 'Push to Repo'
                     // docker push uday1011/cicd-e2e:${BUILD_NUMBER}
                     // '''
-                }
-            }
-        }    
+                        }
+                    }       
+                }    
   
-    }
+            }
+        }
 }
