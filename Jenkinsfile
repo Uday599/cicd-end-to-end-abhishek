@@ -4,6 +4,9 @@ pipeline {
     
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
+        registry = "uday1011/cicd-e2e"
+        registryCredential = 'dockerhub_id'
+        dockerImage = ''
     }
     
     stages {
@@ -19,10 +22,11 @@ pipeline {
         stage('Build Docker'){
             steps{
                 script{
-                    sh '''
-                    echo 'Buid Docker Image'
-                    docker build -t uday1011/cicd-e2e:${BUILD_NUMBER} .
-                    '''
+                    //sh '''
+                    //echo 'Buid Docker Image'
+                    // docker build -t uday1011/cicd-e2e:${BUILD_NUMBER} .
+                    //'''
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
         }
@@ -30,10 +34,13 @@ pipeline {
         stage('Push the artifacts'){
            steps{
                 script{
-                    sh '''
-                    echo 'Push to Repo'
-                    docker push uday1011/cicd-e2e:${BUILD_NUMBER}
-                    '''
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                    
+                    //sh '''
+                    // echo 'Push to Repo'
+                    // docker push uday1011/cicd-e2e:${BUILD_NUMBER}
+                    // '''
                 }
             }
         }    
