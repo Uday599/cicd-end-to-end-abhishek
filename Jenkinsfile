@@ -68,7 +68,7 @@ pipeline {
                         git remote -v
                         git push https://github.com/Uday599/cicd-end-to-end-manifest-files.git HEAD:main
                         '''                        
-                }
+                        }
                 }
             }
         }
@@ -77,4 +77,4 @@ pipeline {
                   //  sh "docker rmi $registry:$BUILD_NUMBER"
                   //  }
 }
-}
+
