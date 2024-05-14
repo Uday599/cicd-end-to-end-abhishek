@@ -3,7 +3,7 @@ pipeline {
     agent any 
     
     environment {
-        IMAGE_TAG = "${BUILD_NUMBER}"
+        IMAGE_TAG = "${BUILD_NUMBER}"   
         registry = "uday1011/cicd-e2e"
         registryCredential = 'dockerhub_id'
         dockerImage = ''
