@@ -58,7 +58,7 @@ pipeline {
             steps {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'github-credential', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        sh ''
+                        sh '''
                         cat deploy.yaml
                         sed -i 19"s/1/${BUILD_NUMBER}/g" deploy.yaml
                         cat deploy.yaml
@@ -68,7 +68,8 @@ pipeline {
                         git config --global user.password "${GIT_PASSWORD}"
                         git remote -v
                         git push 'https://github.com/Uday599/cicd-end-to-end-manifest-files.git' HEAD:main
-                        '''                        
+                        '''  
+
                         }
                     }
                 }
