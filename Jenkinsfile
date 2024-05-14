@@ -5,7 +5,7 @@ pipeline {
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"   
         registry = "uday1011/cicd-e2e"
-        registryCredential = 'dockerhub_id'
+        registryCredential = 'dockerhub_id'  
         dockerImage = ''
     }
     
